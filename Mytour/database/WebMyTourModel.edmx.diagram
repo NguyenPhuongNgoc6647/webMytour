@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="65f2249f64b34da79177f406d1cf1952" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="webMytourModel.Cam_nang" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Ct_phong" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Dia_diem" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Dia_diem_gan_ks" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Khach_hang" Width="1.5" PointX="7.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Khach_san" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Loai_phong" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Loai_tour" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Nha_cung_cap" Width="1.5" PointX="7.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Phuong_tien" Width="1.5" PointX="7.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Pthuc_tt" Width="1.5" PointX="9.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Thanh_toan" Width="1.5" PointX="12" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Tien_nghi" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Tinh" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Tour" Width="1.5" PointX="9.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Tuy_chon" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="webMytourModel.Url_anh" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="webMytourModel.fk_Camnang_Diadiem" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_CtPhong_Khachsan" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_CtPhong_Loaiphong" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_Thanhtoan_CtPhong" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_dd_tinh" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_ganKs_Khachsan" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_Thanhtoan_Khachhang" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_Khachsan_Tinh" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_Thanhtoan_Pthuctt" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.fk_Thanhtoan_Tour" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_anh_ks" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_anh_phong" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_anh_tour" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_Camnang" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_dat_tour" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_datPhong" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_dd" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_loai_tour" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_nha_cc" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_phuong_tien" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_tien_nghi" ManuallyRouted="false" />
+        <AssociationConnector Association="webMytourModel.Ct_tuy_chon" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

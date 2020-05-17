@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="webMytourModelStoreContainer" CdmEntityContainer="webMytourEntities">
+    <EntitySetMapping Name="Cam_nang">
+      <EntityTypeMapping TypeName="webMytourModel.Cam_nang">
+        <MappingFragment StoreEntitySet="Cam_nang">
+          <ScalarProperty Name="ma_bai_viet" ColumnName="ma_bai_viet" />
+          <ScalarProperty Name="ten_bai_viet" ColumnName="ten_bai_viet" />
+          <ScalarProperty Name="chuyen_muc" ColumnName="chuyen_muc" />
+          <ScalarProperty Name="ma_dd" ColumnName="ma_dd" />
+          <ScalarProperty Name="luot_xem" ColumnName="luot_xem" />
+          <ScalarProperty Name="sl_thich_bai" ColumnName="sl_thich_bai" />
+          <ScalarProperty Name="sl_share_bai" ColumnName="sl_share_bai" />
+          <ScalarProperty Name="ngay_dang" ColumnName="ngay_dang" />
+          <ScalarProperty Name="noi_dung" ColumnName="noi_dung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ct_phong">
+      <EntityTypeMapping TypeName="webMytourModel.Ct_phong">
+        <MappingFragment StoreEntitySet="Ct_phong">
+          <ScalarProperty Name="ma_ks" ColumnName="ma_ks" />
+          <ScalarProperty Name="ma_phong" ColumnName="ma_phong" />
+          <ScalarProperty Name="ma_loai_phong" ColumnName="ma_loai_phong" />
+          <ScalarProperty Name="khuyen_mai_phong" ColumnName="khuyen_mai_phong" />
+          <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dia_diem">
+      <EntityTypeMapping TypeName="webMytourModel.Dia_diem">
+        <MappingFragment StoreEntitySet="Dia_diem">
+          <ScalarProperty Name="ma_dd" ColumnName="ma_dd" />
+          <ScalarProperty Name="ten_dd" ColumnName="ten_dd" />
+          <ScalarProperty Name="ma_tinh" ColumnName="ma_tinh" />
+          <ScalarProperty Name="mo_ta_dd" ColumnName="mo_ta_dd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dia_diem_gan_ks">
+      <EntityTypeMapping TypeName="webMytourModel.Dia_diem_gan_ks">
+        <MappingFragment StoreEntitySet="Dia_diem_gan_ks">
+          <ScalarProperty Name="id_dia_diem" ColumnName="id_dia_diem" />
+          <ScalarProperty Name="ma_ks" ColumnName="ma_ks" />
+          <ScalarProperty Name="ten_dia_diem_gan_ks" ColumnName="ten_dia_diem_gan_ks" />
+          <ScalarProperty Name="khoang_cach" ColumnName="khoang_cach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Khach_hang">
+      <EntityTypeMapping TypeName="webMytourModel.Khach_hang">
+        <MappingFragment StoreEntitySet="Khach_hang">
+          <ScalarProperty Name="tai_khoan" ColumnName="tai_khoan" />
+          <ScalarProperty Name="ten_kh" ColumnName="ten_kh" />
+          <ScalarProperty Name="mat_khau" ColumnName="mat_khau" />
+          <ScalarProperty Name="sdt_kh" ColumnName="sdt_kh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="dia_chi_kh" ColumnName="dia_chi_kh" />
+          <ScalarProperty Name="diem_thuong" ColumnName="diem_thuong" />
+          <ScalarProperty Name="ks_yeuthich" ColumnName="ks_yeuthich" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Khach_san">
+      <EntityTypeMapping TypeName="webMytourModel.Khach_san">
+        <MappingFragment StoreEntitySet="Khach_san">
+          <ScalarProperty Name="ma_ks" ColumnName="ma_ks" />
+          <ScalarProperty Name="ten_ks" ColumnName="ten_ks" />
+          <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />
+          <ScalarProperty Name="diem_danh_gia" ColumnName="diem_danh_gia" />
+          <ScalarProperty Name="ma_tinh" ColumnName="ma_tinh" />
+          <ScalarProperty Name="sl_share" ColumnName="sl_share" />
+          <ScalarProperty Name="sl_like" ColumnName="sl_like" />
+          <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+          <ScalarProperty Name="sl_danh_gia" ColumnName="sl_danh_gia" />
+          <ScalarProperty Name="gioi_thieu_ks" ColumnName="gioi_thieu_ks" />
+          <ScalarProperty Name="chinh_sach_ks" ColumnName="chinh_sach_ks" />
+          <ScalarProperty Name="loai_ks" ColumnName="loai_ks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loai_phong">
+      <EntityTypeMapping TypeName="webMytourModel.Loai_phong">
+        <MappingFragment StoreEntitySet="Loai_phong">
+          <ScalarProperty Name="ma_loai_phong" ColumnName="ma_loai_phong" />
+          <ScalarProperty Name="ten_loai_phong" ColumnName="ten_loai_phong" />
+          <ScalarProperty Name="dien_tich" ColumnName="dien_tich" />
+          <ScalarProperty Name="mo_ta_phong" ColumnName="mo_ta_phong" />
+          <ScalarProperty Name="tien_nghi_phong" ColumnName="tien_nghi_phong" />
+          <ScalarProperty Name="gia_phong" ColumnName="gia_phong" />
+          <ScalarProperty Name="so_giuong" ColumnName="so_giuong" />
+          <ScalarProperty Name="so_nguoi_max" ColumnName="so_nguoi_max" />
+          <ScalarProperty Name="so_phong_con_lai" ColumnName="so_phong_con_lai" />
+          <ScalarProperty Name="tong_so_phong" ColumnName="tong_so_phong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loai_tour">
+      <EntityTypeMapping TypeName="webMytourModel.Loai_tour">
+        <MappingFragment StoreEntitySet="Loai_tour">
+          <ScalarProperty Name="ma_loai_tour" ColumnName="ma_loai_tour" />
+          <ScalarProperty Name="ten_loai_tour" ColumnName="ten_loai_tour" />
+          <ScalarProperty Name="mo_ta_tour" ColumnName="mo_ta_tour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nha_cung_cap">
+      <EntityTypeMapping TypeName="webMytourModel.Nha_cung_cap">
+        <MappingFragment StoreEntitySet="Nha_cung_cap">
+          <ScalarProperty Name="ma_nha_cc" ColumnName="ma_nha_cc" />
+          <ScalarProperty Name="ten_nha_cc" ColumnName="ten_nha_cc" />
+          <ScalarProperty Name="dia_chi_nha_cc" ColumnName="dia_chi_nha_cc" />
+          <ScalarProperty Name="sdt" ColumnName="sdt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Phuong_tien">
+      <EntityTypeMapping TypeName="webMytourModel.Phuong_tien">
+        <MappingFragment StoreEntitySet="Phuong_tien">
+          <ScalarProperty Name="ma_phuong_tien" ColumnName="ma_phuong_tien" />
+          <ScalarProperty Name="ten_phuong_tien" ColumnName="ten_phuong_tien" />
+          <ScalarProperty Name="bien_so_xe" ColumnName="bien_so_xe" />
+          <ScalarProperty Name="mo_ta_phuong_tien" ColumnName="mo_ta_phuong_tien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pthuc_tt">
+      <EntityTypeMapping TypeName="webMytourModel.Pthuc_tt">
+        <MappingFragment StoreEntitySet="Pthuc_tt">
+          <ScalarProperty Name="ma_pt_tt" ColumnName="ma_pt_tt" />
+          <ScalarProperty Name="loai_thanh_toan" ColumnName="loai_thanh_toan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Thanh_toan">
+      <EntityTypeMapping TypeName="webMytourModel.Thanh_toan">
+        <MappingFragment StoreEntitySet="Thanh_toan">
+          <ScalarProperty Name="tai_khoan" ColumnName="tai_khoan" />
+          <ScalarProperty Name="ma_pt_tt" ColumnName="ma_pt_tt" />
+          <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+          <ScalarProperty Name="ma_phong" ColumnName="ma_phong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tien_nghi">
+      <EntityTypeMapping TypeName="webMytourModel.Tien_nghi">
+        <MappingFragment StoreEntitySet="Tien_nghi">
+          <ScalarProperty Name="ma_tien_nghi" ColumnName="ma_tien_nghi" />
+          <ScalarProperty Name="ten_tien_nghi" ColumnName="ten_tien_nghi" />
+          <ScalarProperty Name="nd_tien_nghi" ColumnName="nd_tien_nghi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tinhs">
+      <EntityTypeMapping TypeName="webMytourModel.Tinh">
+        <MappingFragment StoreEntitySet="Tinh">
+          <ScalarProperty Name="ma_tinh" ColumnName="ma_tinh" />
+          <ScalarProperty Name="ten_tinh" ColumnName="ten_tinh" />
+          <ScalarProperty Name="gioi_thieu_tinh" ColumnName="gioi_thieu_tinh" />
+          <ScalarProperty Name="anh" ColumnName="anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tours">
+      <EntityTypeMapping TypeName="webMytourModel.Tour">
+        <MappingFragment StoreEntitySet="Tour">
+          <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+          <ScalarProperty Name="ten_tour" ColumnName="ten_tour" />
+          <ScalarProperty Name="ngay_kh" ColumnName="ngay_kh" />
+          <ScalarProperty Name="diem_kh" ColumnName="diem_kh" />
+          <ScalarProperty Name="gioi_thieu_tour" ColumnName="gioi_thieu_tour" />
+          <ScalarProperty Name="thoi_gian" ColumnName="thoi_gian" />
+          <ScalarProperty Name="lich_trinh" ColumnName="lich_trinh" />
+          <ScalarProperty Name="khuyen_mai_tour" ColumnName="khuyen_mai_tour" />
+          <ScalarProperty Name="gia_tour" ColumnName="gia_tour" />
+          <ScalarProperty Name="danh_gia_tour" ColumnName="danh_gia_tour" />
+          <ScalarProperty Name="sl_chia_se" ColumnName="sl_chia_se" />
+          <ScalarProperty Name="sl_thich" ColumnName="sl_thich" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tuy_chon">
+      <EntityTypeMapping TypeName="webMytourModel.Tuy_chon">
+        <MappingFragment StoreEntitySet="Tuy_chon">
+          <ScalarProperty Name="ma_tuy_chon" ColumnName="ma_tuy_chon" />
+          <ScalarProperty Name="ten_tuy_chon" ColumnName="ten_tuy_chon" />
+          <ScalarProperty Name="nd_tuy_chon" ColumnName="nd_tuy_chon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Url_anh">
+      <EntityTypeMapping TypeName="webMytourModel.Url_anh">
+        <MappingFragment StoreEntitySet="Url_anh">
+          <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+          <ScalarProperty Name="dc_url" ColumnName="dc_url" />
+          <ScalarProperty Name="ten_anh" ColumnName="ten_anh" />
+          <ScalarProperty Name="loai_anh" ColumnName="loai_anh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Ct_anh_ks" TypeName="webMytourModel.Ct_anh_ks" StoreEntitySet="Ct_anh_ks">
+      <EndProperty Name="Khach_san">
+        <ScalarProperty Name="ma_ks" ColumnName="ma_ks" />
+      </EndProperty>
+      <EndProperty Name="Url_anh">
+        <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_anh_phong" TypeName="webMytourModel.Ct_anh_phong" StoreEntitySet="Ct_anh_phong">
+      <EndProperty Name="Ct_phong">
+        <ScalarProperty Name="ma_phong" ColumnName="ma_phong" />
+      </EndProperty>
+      <EndProperty Name="Url_anh">
+        <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_anh_tour" TypeName="webMytourModel.Ct_anh_tour" StoreEntitySet="Ct_anh_tour">
+      <EndProperty Name="Url_anh">
+        <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+      </EndProperty>
+      <EndProperty Name="Tour">
+        <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_Camnang" TypeName="webMytourModel.Ct_Camnang" StoreEntitySet="Ct_Camnang">
+      <EndProperty Name="Cam_nang">
+        <ScalarProperty Name="ma_bai_viet" ColumnName="ma_bai_viet" />
+      </EndProperty>
+      <EndProperty Name="Url_anh">
+        <ScalarProperty Name="id_anh" ColumnName="id_anh" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_dat_tour" TypeName="webMytourModel.Ct_dat_tour" StoreEntitySet="Ct_dat_tour">
+      <EndProperty Name="Khach_hang">
+        <ScalarProperty Name="tai_khoan" ColumnName="tai_khoan" />
+      </EndProperty>
+      <EndProperty Name="Tour">
+        <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_datPhong" TypeName="webMytourModel.Ct_datPhong" StoreEntitySet="Ct_datPhong">
+      <EndProperty Name="Ct_phong">
+        <ScalarProperty Name="ma_phong" ColumnName="ma_phong" />
+      </EndProperty>
+      <EndProperty Name="Khach_hang">
+        <ScalarProperty Name="tai_khoan" ColumnName="tai_khoan" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_dd" TypeName="webMytourModel.Ct_dd" StoreEntitySet="Ct_dd">
+      <EndProperty Name="Dia_diem">
+        <ScalarProperty Name="ma_dd" ColumnName="ma_dd" />
+      </EndProperty>
+      <EndProperty Name="Tour">
+        <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_loai_tour" TypeName="webMytourModel.Ct_loai_tour" StoreEntitySet="Ct_loai_tour">
+      <EndProperty Name="Loai_tour">
+        <ScalarProperty Name="ma_loai_tour" ColumnName="ma_loai_tour" />
+      </EndProperty>
+      <EndProperty Name="Tour">
+        <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_nha_cc" TypeName="webMytourModel.Ct_nha_cc" StoreEntitySet="Ct_nha_cc">
+      <EndProperty Name="Nha_cung_cap">
+        <ScalarProperty Name="ma_nha_cc" ColumnName="ma_nha_cc" />
+      </EndProperty>
+      <EndProperty Name="Tour">
+        <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_phuong_tien" TypeName="webMytourModel.Ct_phuong_tien" StoreEntitySet="Ct_phuong_tien">
+      <EndProperty Name="Phuong_tien">
+        <ScalarProperty Name="ma_phuong_tien" ColumnName="ma_phuong_tien" />
+      </EndProperty>
+      <EndProperty Name="Tour">
+        <ScalarProperty Name="ma_tour" ColumnName="ma_tour" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_tien_nghi" TypeName="webMytourModel.Ct_tien_nghi" StoreEntitySet="Ct_tien_nghi">
+      <EndProperty Name="Khach_san">
+        <ScalarProperty Name="ma_ks" ColumnName="ma_ks" />
+      </EndProperty>
+      <EndProperty Name="Tien_nghi">
+        <ScalarProperty Name="ma_tien_nghi" ColumnName="ma_tien_nghi" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ct_tuy_chon" TypeName="webMytourModel.Ct_tuy_chon" StoreEntitySet="Ct_tuy_chon">
+      <EndProperty Name="Ct_phong">
+        <ScalarProperty Name="ma_phong" ColumnName="ma_phong" />
+      </EndProperty>
+      <EndProperty Name="Tuy_chon">
+        <ScalarProperty Name="ma_tuy_chon" ColumnName="ma_tuy_chon" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

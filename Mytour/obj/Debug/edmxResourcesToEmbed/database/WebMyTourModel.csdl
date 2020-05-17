@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webMytourModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cam_nang">
+    <Key>
+      <PropertyRef Name="ma_bai_viet" />
+    </Key>
+    <Property Name="ma_bai_viet" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_bai_viet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="chuyen_muc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ma_dd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="luot_xem" Type="Int32" />
+    <Property Name="sl_thich_bai" Type="Int32" />
+    <Property Name="sl_share_bai" Type="Int32" />
+    <Property Name="ngay_dang" Type="DateTime" Precision="0" />
+    <Property Name="noi_dung" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Dia_diem" Relationship="Self.fk_Camnang_Diadiem" FromRole="Cam_nang" ToRole="Dia_diem" />
+    <NavigationProperty Name="Url_anh" Relationship="Self.Ct_Camnang" FromRole="Cam_nang" ToRole="Url_anh" />
+  </EntityType>
+  <EntityType Name="Ct_phong">
+    <Key>
+      <PropertyRef Name="ma_phong" />
+    </Key>
+    <Property Name="ma_ks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ma_phong" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ma_loai_phong" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="khuyen_mai_phong" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="id_anh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Khach_san" Relationship="Self.fk_CtPhong_Khachsan" FromRole="Ct_phong" ToRole="Khach_san" />
+    <NavigationProperty Name="Loai_phong" Relationship="Self.fk_CtPhong_Loaiphong" FromRole="Ct_phong" ToRole="Loai_phong" />
+    <NavigationProperty Name="Thanh_toan" Relationship="Self.fk_Thanhtoan_CtPhong" FromRole="Ct_phong" ToRole="Thanh_toan" />
+    <NavigationProperty Name="Url_anh" Relationship="Self.Ct_anh_phong" FromRole="Ct_phong" ToRole="Url_anh" />
+    <NavigationProperty Name="Khach_hang" Relationship="Self.Ct_datPhong" FromRole="Ct_phong" ToRole="Khach_hang" />
+    <NavigationProperty Name="Tuy_chon" Relationship="Self.Ct_tuy_chon" FromRole="Ct_phong" ToRole="Tuy_chon" />
+  </EntityType>
+  <EntityType Name="Dia_diem">
+    <Key>
+      <PropertyRef Name="ma_dd" />
+    </Key>
+    <Property Name="ma_dd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_dd" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ma_tinh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mo_ta_dd" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cam_nang" Relationship="Self.fk_Camnang_Diadiem" FromRole="Dia_diem" ToRole="Cam_nang" />
+    <NavigationProperty Name="Tinh" Relationship="Self.fk_dd_tinh" FromRole="Dia_diem" ToRole="Tinh" />
+    <NavigationProperty Name="Tours" Relationship="Self.Ct_dd" FromRole="Dia_diem" ToRole="Tour" />
+  </EntityType>
+  <EntityType Name="Dia_diem_gan_ks">
+    <Key>
+      <PropertyRef Name="id_dia_diem" />
+      <PropertyRef Name="ma_ks" />
+    </Key>
+    <Property Name="id_dia_diem" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ma_ks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_dia_diem_gan_ks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="khoang_cach" Type="Double" />
+    <NavigationProperty Name="Khach_san" Relationship="Self.fk_ganKs_Khachsan" FromRole="Dia_diem_gan_ks" ToRole="Khach_san" />
+  </EntityType>
+  <EntityType Name="Khach_hang">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+    </Key>
+    <Property Name="tai_khoan" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_kh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="mat_khau" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="sdt_kh" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="dia_chi_kh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="diem_thuong" Type="Int32" />
+    <Property Name="ks_yeuthich" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Thanh_toan" Relationship="Self.fk_Thanhtoan_Khachhang" FromRole="Khach_hang" ToRole="Thanh_toan" />
+    <NavigationProperty Name="Tours" Relationship="Self.Ct_dat_tour" FromRole="Khach_hang" ToRole="Tour" />
+    <NavigationProperty Name="Ct_phong" Relationship="Self.Ct_datPhong" FromRole="Khach_hang" ToRole="Ct_phong" />
+  </EntityType>
+  <EntityType Name="Khach_san">
+    <Key>
+      <PropertyRef Name="ma_ks" />
+    </Key>
+    <Property Name="ma_ks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_ks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="dia_chi" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="diem_danh_gia" Type="Double" />
+    <Property Name="ma_tinh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="sl_share" Type="Int32" />
+    <Property Name="sl_like" Type="Int32" />
+    <Property Name="id_anh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="sl_danh_gia" Type="Int32" />
+    <Property Name="gioi_thieu_ks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="chinh_sach_ks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="loai_ks" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Ct_phong" Relationship="Self.fk_CtPhong_Khachsan" FromRole="Khach_san" ToRole="Ct_phong" />
+    <NavigationProperty Name="Dia_diem_gan_ks" Relationship="Self.fk_ganKs_Khachsan" FromRole="Khach_san" ToRole="Dia_diem_gan_ks" />
+    <NavigationProperty Name="Tinh" Relationship="Self.fk_Khachsan_Tinh" FromRole="Khach_san" ToRole="Tinh" />
+    <NavigationProperty Name="Url_anh" Relationship="Self.Ct_anh_ks" FromRole="Khach_san" ToRole="Url_anh" />
+    <NavigationProperty Name="Tien_nghi" Relationship="Self.Ct_tien_nghi" FromRole="Khach_san" ToRole="Tien_nghi" />
+  </EntityType>
+  <EntityType Name="Loai_phong">
+    <Key>
+      <PropertyRef Name="ma_loai_phong" />
+    </Key>
+    <Property Name="ma_loai_phong" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_loai_phong" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="dien_tich" Type="Double" />
+    <Property Name="mo_ta_phong" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tien_nghi_phong" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="gia_phong" Type="Double" />
+    <Property Name="so_giuong" Type="Int32" />
+    <Property Name="so_nguoi_max" Type="Int32" />
+    <Property Name="so_phong_con_lai" Type="Int32" />
+    <Property Name="tong_so_phong" Type="Int32" />
+    <NavigationProperty Name="Ct_phong" Relationship="Self.fk_CtPhong_Loaiphong" FromRole="Loai_phong" ToRole="Ct_phong" />
+  </EntityType>
+  <EntityType Name="Loai_tour">
+    <Key>
+      <PropertyRef Name="ma_loai_tour" />
+    </Key>
+    <Property Name="ma_loai_tour" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_loai_tour" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="mo_ta_tour" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tours" Relationship="Self.Ct_loai_tour" FromRole="Loai_tour" ToRole="Tour" />
+  </EntityType>
+  <EntityType Name="Nha_cung_cap">
+    <Key>
+      <PropertyRef Name="ma_nha_cc" />
+    </Key>
+    <Property Name="ma_nha_cc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_nha_cc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="dia_chi_nha_cc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="sdt" Type="Int32" />
+    <NavigationProperty Name="Tours" Relationship="Self.Ct_nha_cc" FromRole="Nha_cung_cap" ToRole="Tour" />
+  </EntityType>
+  <EntityType Name="Phuong_tien">
+    <Key>
+      <PropertyRef Name="ma_phuong_tien" />
+    </Key>
+    <Property Name="ma_phuong_tien" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_phuong_tien" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="bien_so_xe" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="mo_ta_phuong_tien" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tours" Relationship="Self.Ct_phuong_tien" FromRole="Phuong_tien" ToRole="Tour" />
+  </EntityType>
+  <EntityType Name="Pthuc_tt">
+    <Key>
+      <PropertyRef Name="ma_pt_tt" />
+    </Key>
+    <Property Name="ma_pt_tt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="loai_thanh_toan" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Thanh_toan" Relationship="Self.fk_Thanhtoan_Pthuctt" FromRole="Pthuc_tt" ToRole="Thanh_toan" />
+  </EntityType>
+  <EntityType Name="Thanh_toan">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+      <PropertyRef Name="ma_pt_tt" />
+    </Key>
+    <Property Name="tai_khoan" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ma_pt_tt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ma_tour" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ma_phong" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ct_phong" Relationship="Self.fk_Thanhtoan_CtPhong" FromRole="Thanh_toan" ToRole="Ct_phong" />
+    <NavigationProperty Name="Khach_hang" Relationship="Self.fk_Thanhtoan_Khachhang" FromRole="Thanh_toan" ToRole="Khach_hang" />
+    <NavigationProperty Name="Pthuc_tt" Relationship="Self.fk_Thanhtoan_Pthuctt" FromRole="Thanh_toan" ToRole="Pthuc_tt" />
+    <NavigationProperty Name="Tour" Relationship="Self.fk_Thanhtoan_Tour" FromRole="Thanh_toan" ToRole="Tour" />
+  </EntityType>
+  <EntityType Name="Tien_nghi">
+    <Key>
+      <PropertyRef Name="ma_tien_nghi" />
+    </Key>
+    <Property Name="ma_tien_nghi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_tien_nghi" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="nd_tien_nghi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Khach_san" Relationship="Self.Ct_tien_nghi" FromRole="Tien_nghi" ToRole="Khach_san" />
+  </EntityType>
+  <EntityType Name="Tinh">
+    <Key>
+      <PropertyRef Name="ma_tinh" />
+    </Key>
+    <Property Name="ma_tinh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_tinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="gioi_thieu_tinh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="anh" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Dia_diem" Relationship="Self.fk_dd_tinh" FromRole="Tinh" ToRole="Dia_diem" />
+    <NavigationProperty Name="Khach_san" Relationship="Self.fk_Khachsan_Tinh" FromRole="Tinh" ToRole="Khach_san" />
+  </EntityType>
+  <EntityType Name="Tour">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+    </Key>
+    <Property Name="ma_tour" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_tour" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ngay_kh" Type="DateTime" Precision="0" />
+    <Property Name="diem_kh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="gioi_thieu_tour" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="thoi_gian" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="lich_trinh" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="khuyen_mai_tour" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="gia_tour" Type="Double" />
+    <Property Name="danh_gia_tour" Type="Int32" />
+    <Property Name="sl_chia_se" Type="Int32" />
+    <Property Name="sl_thich" Type="Int32" />
+    <NavigationProperty Name="Thanh_toan" Relationship="Self.fk_Thanhtoan_Tour" FromRole="Tour" ToRole="Thanh_toan" />
+    <NavigationProperty Name="Url_anh" Relationship="Self.Ct_anh_tour" FromRole="Tour" ToRole="Url_anh" />
+    <NavigationProperty Name="Khach_hang" Relationship="Self.Ct_dat_tour" FromRole="Tour" ToRole="Khach_hang" />
+    <NavigationProperty Name="Dia_diem" Relationship="Self.Ct_dd" FromRole="Tour" ToRole="Dia_diem" />
+    <NavigationProperty Name="Loai_tour" Relationship="Self.Ct_loai_tour" FromRole="Tour" ToRole="Loai_tour" />
+    <NavigationProperty Name="Nha_cung_cap" Relationship="Self.Ct_nha_cc" FromRole="Tour" ToRole="Nha_cung_cap" />
+    <NavigationProperty Name="Phuong_tien" Relationship="Self.Ct_phuong_tien" FromRole="Tour" ToRole="Phuong_tien" />
+  </EntityType>
+  <EntityType Name="Tuy_chon">
+    <Key>
+      <PropertyRef Name="ma_tuy_chon" />
+    </Key>
+    <Property Name="ma_tuy_chon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ten_tuy_chon" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="nd_tuy_chon" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ct_phong" Relationship="Self.Ct_tuy_chon" FromRole="Tuy_chon" ToRole="Ct_phong" />
+  </EntityType>
+  <EntityType Name="Url_anh">
+    <Key>
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="id_anh" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dc_url" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ten_anh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="loai_anh" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Khach_san" Relationship="Self.Ct_anh_ks" FromRole="Url_anh" ToRole="Khach_san" />
+    <NavigationProperty Name="Ct_phong" Relationship="Self.Ct_anh_phong" FromRole="Url_anh" ToRole="Ct_phong" />
+    <NavigationProperty Name="Tours" Relationship="Self.Ct_anh_tour" FromRole="Url_anh" ToRole="Tour" />
+    <NavigationProperty Name="Cam_nang" Relationship="Self.Ct_Camnang" FromRole="Url_anh" ToRole="Cam_nang" />
+  </EntityType>
+  <Association Name="fk_Camnang_Diadiem">
+    <End Role="Dia_diem" Type="Self.Dia_diem" Multiplicity="0..1" />
+    <End Role="Cam_nang" Type="Self.Cam_nang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dia_diem">
+        <PropertyRef Name="ma_dd" />
+      </Principal>
+      <Dependent Role="Cam_nang">
+        <PropertyRef Name="ma_dd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtPhong_Khachsan">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="0..1" />
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_san">
+        <PropertyRef Name="ma_ks" />
+      </Principal>
+      <Dependent Role="Ct_phong">
+        <PropertyRef Name="ma_ks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtPhong_Loaiphong">
+    <End Role="Loai_phong" Type="Self.Loai_phong" Multiplicity="0..1" />
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loai_phong">
+        <PropertyRef Name="ma_loai_phong" />
+      </Principal>
+      <Dependent Role="Ct_phong">
+        <PropertyRef Name="ma_loai_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_CtPhong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="0..1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ct_phong">
+        <PropertyRef Name="ma_phong" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dd_tinh">
+    <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+    <End Role="Dia_diem" Type="Self.Dia_diem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tinh">
+        <PropertyRef Name="ma_tinh" />
+      </Principal>
+      <Dependent Role="Dia_diem">
+        <PropertyRef Name="ma_tinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ganKs_Khachsan">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="1" />
+    <End Role="Dia_diem_gan_ks" Type="Self.Dia_diem_gan_ks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_san">
+        <PropertyRef Name="ma_ks" />
+      </Principal>
+      <Dependent Role="Dia_diem_gan_ks">
+        <PropertyRef Name="ma_ks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_Khachhang">
+    <End Role="Khach_hang" Type="Self.Khach_hang" Multiplicity="1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_hang">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="tai_khoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Khachsan_Tinh">
+    <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tinh">
+        <PropertyRef Name="ma_tinh" />
+      </Principal>
+      <Dependent Role="Khach_san">
+        <PropertyRef Name="ma_tinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_Pthuctt">
+    <End Role="Pthuc_tt" Type="Self.Pthuc_tt" Multiplicity="1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pthuc_tt">
+        <PropertyRef Name="ma_pt_tt" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="ma_pt_tt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_Tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="0..1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Ct_anh_ks">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="*" />
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_anh_phong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_anh_tour">
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="*" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_Camnang">
+    <End Role="Cam_nang" Type="Self.Cam_nang" Multiplicity="*" />
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_dat_tour">
+    <End Role="Khach_hang" Type="Self.Khach_hang" Multiplicity="*" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_datPhong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <End Role="Khach_hang" Type="Self.Khach_hang" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_dd">
+    <End Role="Dia_diem" Type="Self.Dia_diem" Multiplicity="*" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_loai_tour">
+    <End Role="Loai_tour" Type="Self.Loai_tour" Multiplicity="*" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_nha_cc">
+    <End Role="Nha_cung_cap" Type="Self.Nha_cung_cap" Multiplicity="*" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_phuong_tien">
+    <End Role="Phuong_tien" Type="Self.Phuong_tien" Multiplicity="*" />
+    <End Role="Tour" Type="Self.Tour" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_tien_nghi">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="*" />
+    <End Role="Tien_nghi" Type="Self.Tien_nghi" Multiplicity="*" />
+  </Association>
+  <Association Name="Ct_tuy_chon">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <End Role="Tuy_chon" Type="Self.Tuy_chon" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="webMytourEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cam_nang" EntityType="Self.Cam_nang" />
+    <EntitySet Name="Ct_phong" EntityType="Self.Ct_phong" />
+    <EntitySet Name="Dia_diem" EntityType="Self.Dia_diem" />
+    <EntitySet Name="Dia_diem_gan_ks" EntityType="Self.Dia_diem_gan_ks" />
+    <EntitySet Name="Khach_hang" EntityType="Self.Khach_hang" />
+    <EntitySet Name="Khach_san" EntityType="Self.Khach_san" />
+    <EntitySet Name="Loai_phong" EntityType="Self.Loai_phong" />
+    <EntitySet Name="Loai_tour" EntityType="Self.Loai_tour" />
+    <EntitySet Name="Nha_cung_cap" EntityType="Self.Nha_cung_cap" />
+    <EntitySet Name="Phuong_tien" EntityType="Self.Phuong_tien" />
+    <EntitySet Name="Pthuc_tt" EntityType="Self.Pthuc_tt" />
+    <EntitySet Name="Thanh_toan" EntityType="Self.Thanh_toan" />
+    <EntitySet Name="Tien_nghi" EntityType="Self.Tien_nghi" />
+    <EntitySet Name="Tinhs" EntityType="Self.Tinh" />
+    <EntitySet Name="Tours" EntityType="Self.Tour" />
+    <EntitySet Name="Tuy_chon" EntityType="Self.Tuy_chon" />
+    <EntitySet Name="Url_anh" EntityType="Self.Url_anh" />
+    <AssociationSet Name="fk_Camnang_Diadiem" Association="Self.fk_Camnang_Diadiem">
+      <End Role="Dia_diem" EntitySet="Dia_diem" />
+      <End Role="Cam_nang" EntitySet="Cam_nang" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtPhong_Khachsan" Association="Self.fk_CtPhong_Khachsan">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtPhong_Loaiphong" Association="Self.fk_CtPhong_Loaiphong">
+      <End Role="Loai_phong" EntitySet="Loai_phong" />
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_CtPhong" Association="Self.fk_Thanhtoan_CtPhong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dd_tinh" Association="Self.fk_dd_tinh">
+      <End Role="Tinh" EntitySet="Tinhs" />
+      <End Role="Dia_diem" EntitySet="Dia_diem" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ganKs_Khachsan" Association="Self.fk_ganKs_Khachsan">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Dia_diem_gan_ks" EntitySet="Dia_diem_gan_ks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_Khachhang" Association="Self.fk_Thanhtoan_Khachhang">
+      <End Role="Khach_hang" EntitySet="Khach_hang" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Khachsan_Tinh" Association="Self.fk_Khachsan_Tinh">
+      <End Role="Tinh" EntitySet="Tinhs" />
+      <End Role="Khach_san" EntitySet="Khach_san" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_Pthuctt" Association="Self.fk_Thanhtoan_Pthuctt">
+      <End Role="Pthuc_tt" EntitySet="Pthuc_tt" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_Tour" Association="Self.fk_Thanhtoan_Tour">
+      <End Role="Tour" EntitySet="Tours" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_anh_ks" Association="Self.Ct_anh_ks">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Url_anh" EntitySet="Url_anh" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_anh_phong" Association="Self.Ct_anh_phong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Url_anh" EntitySet="Url_anh" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_anh_tour" Association="Self.Ct_anh_tour">
+      <End Role="Url_anh" EntitySet="Url_anh" />
+      <End Role="Tour" EntitySet="Tours" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_Camnang" Association="Self.Ct_Camnang">
+      <End Role="Cam_nang" EntitySet="Cam_nang" />
+      <End Role="Url_anh" EntitySet="Url_anh" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_dat_tour" Association="Self.Ct_dat_tour">
+      <End Role="Khach_hang" EntitySet="Khach_hang" />
+      <End Role="Tour" EntitySet="Tours" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_datPhong" Association="Self.Ct_datPhong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Khach_hang" EntitySet="Khach_hang" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_dd" Association="Self.Ct_dd">
+      <End Role="Dia_diem" EntitySet="Dia_diem" />
+      <End Role="Tour" EntitySet="Tours" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_loai_tour" Association="Self.Ct_loai_tour">
+      <End Role="Loai_tour" EntitySet="Loai_tour" />
+      <End Role="Tour" EntitySet="Tours" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_nha_cc" Association="Self.Ct_nha_cc">
+      <End Role="Nha_cung_cap" EntitySet="Nha_cung_cap" />
+      <End Role="Tour" EntitySet="Tours" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_phuong_tien" Association="Self.Ct_phuong_tien">
+      <End Role="Phuong_tien" EntitySet="Phuong_tien" />
+      <End Role="Tour" EntitySet="Tours" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_tien_nghi" Association="Self.Ct_tien_nghi">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Tien_nghi" EntitySet="Tien_nghi" />
+    </AssociationSet>
+    <AssociationSet Name="Ct_tuy_chon" Association="Self.Ct_tuy_chon">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Tuy_chon" EntitySet="Tuy_chon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

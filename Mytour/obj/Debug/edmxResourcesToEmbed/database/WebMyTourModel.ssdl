@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webMytourModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cam_nang">
+    <Key>
+      <PropertyRef Name="ma_bai_viet" />
+    </Key>
+    <Property Name="ma_bai_viet" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_bai_viet" Type="text" />
+    <Property Name="chuyen_muc" Type="nvarchar" MaxLength="100" />
+    <Property Name="ma_dd" Type="varchar" MaxLength="100" />
+    <Property Name="luot_xem" Type="int" />
+    <Property Name="sl_thich_bai" Type="int" />
+    <Property Name="sl_share_bai" Type="int" />
+    <Property Name="ngay_dang" Type="date" />
+    <Property Name="noi_dung" Type="text" />
+  </EntityType>
+  <EntityType Name="Ct_anh_ks">
+    <Key>
+      <PropertyRef Name="ma_ks" />
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="ma_ks" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_anh" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_anh_phong">
+    <Key>
+      <PropertyRef Name="ma_phong" />
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="ma_phong" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_anh" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_anh_tour">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_anh" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_Camnang">
+    <Key>
+      <PropertyRef Name="ma_bai_viet" />
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="ma_bai_viet" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="id_anh" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_dat_tour">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+      <PropertyRef Name="ma_tour" />
+    </Key>
+    <Property Name="tai_khoan" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_datPhong">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+      <PropertyRef Name="ma_phong" />
+    </Key>
+    <Property Name="tai_khoan" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ma_phong" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_dd">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+      <PropertyRef Name="ma_dd" />
+    </Key>
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_dd" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_loai_tour">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+      <PropertyRef Name="ma_loai_tour" />
+    </Key>
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_loai_tour" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_nha_cc">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+      <PropertyRef Name="ma_nha_cc" />
+    </Key>
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_nha_cc" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_phong">
+    <Key>
+      <PropertyRef Name="ma_phong" />
+    </Key>
+    <Property Name="ma_ks" Type="varchar" MaxLength="100" />
+    <Property Name="ma_phong" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_loai_phong" Type="varchar" MaxLength="100" />
+    <Property Name="khuyen_mai_phong" Type="nvarchar" MaxLength="1000" />
+    <Property Name="id_anh" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Ct_phuong_tien">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+      <PropertyRef Name="ma_phuong_tien" />
+    </Key>
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_phuong_tien" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_tien_nghi">
+    <Key>
+      <PropertyRef Name="ma_ks" />
+      <PropertyRef Name="ma_tien_nghi" />
+    </Key>
+    <Property Name="ma_ks" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_tien_nghi" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ct_tuy_chon">
+    <Key>
+      <PropertyRef Name="ma_phong" />
+      <PropertyRef Name="ma_tuy_chon" />
+    </Key>
+    <Property Name="ma_phong" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_tuy_chon" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dia_diem">
+    <Key>
+      <PropertyRef Name="ma_dd" />
+    </Key>
+    <Property Name="ma_dd" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_dd" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ma_tinh" Type="varchar" MaxLength="100" />
+    <Property Name="mo_ta_dd" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="Dia_diem_gan_ks">
+    <Key>
+      <PropertyRef Name="id_dia_diem" />
+      <PropertyRef Name="ma_ks" />
+    </Key>
+    <Property Name="id_dia_diem" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_ks" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_dia_diem_gan_ks" Type="text" />
+    <Property Name="khoang_cach" Type="float" />
+  </EntityType>
+  <EntityType Name="Khach_hang">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+    </Key>
+    <Property Name="tai_khoan" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ten_kh" Type="nvarchar" MaxLength="1000" />
+    <Property Name="mat_khau" Type="varchar" MaxLength="1000" />
+    <Property Name="sdt_kh" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="1000" />
+    <Property Name="dia_chi_kh" Type="text" />
+    <Property Name="diem_thuong" Type="int" />
+    <Property Name="ks_yeuthich" Type="text" />
+  </EntityType>
+  <EntityType Name="Khach_san">
+    <Key>
+      <PropertyRef Name="ma_ks" />
+    </Key>
+    <Property Name="ma_ks" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_ks" Type="nvarchar" MaxLength="1000" />
+    <Property Name="dia_chi" Type="nvarchar" MaxLength="1000" />
+    <Property Name="diem_danh_gia" Type="float" />
+    <Property Name="ma_tinh" Type="varchar" MaxLength="100" />
+    <Property Name="sl_share" Type="int" />
+    <Property Name="sl_like" Type="int" />
+    <Property Name="id_anh" Type="varchar" MaxLength="100" />
+    <Property Name="sl_danh_gia" Type="int" />
+    <Property Name="gioi_thieu_ks" Type="text" />
+    <Property Name="chinh_sach_ks" Type="text" />
+    <Property Name="loai_ks" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Loai_phong">
+    <Key>
+      <PropertyRef Name="ma_loai_phong" />
+    </Key>
+    <Property Name="ma_loai_phong" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_loai_phong" Type="nvarchar" MaxLength="1000" />
+    <Property Name="dien_tich" Type="float" />
+    <Property Name="mo_ta_phong" Type="text" />
+    <Property Name="tien_nghi_phong" Type="text" />
+    <Property Name="gia_phong" Type="float" />
+    <Property Name="so_giuong" Type="int" />
+    <Property Name="so_nguoi_max" Type="int" />
+    <Property Name="so_phong_con_lai" Type="int" />
+    <Property Name="tong_so_phong" Type="int" />
+  </EntityType>
+  <EntityType Name="Loai_tour">
+    <Key>
+      <PropertyRef Name="ma_loai_tour" />
+    </Key>
+    <Property Name="ma_loai_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_loai_tour" Type="nvarchar" MaxLength="1000" />
+    <Property Name="mo_ta_tour" Type="text" />
+  </EntityType>
+  <EntityType Name="Nha_cung_cap">
+    <Key>
+      <PropertyRef Name="ma_nha_cc" />
+    </Key>
+    <Property Name="ma_nha_cc" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_nha_cc" Type="nvarchar" MaxLength="1000" />
+    <Property Name="dia_chi_nha_cc" Type="nvarchar" MaxLength="1000" />
+    <Property Name="sdt" Type="int" />
+  </EntityType>
+  <EntityType Name="Phuong_tien">
+    <Key>
+      <PropertyRef Name="ma_phuong_tien" />
+    </Key>
+    <Property Name="ma_phuong_tien" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_phuong_tien" Type="nvarchar" MaxLength="1000" />
+    <Property Name="bien_so_xe" Type="varchar" MaxLength="100" />
+    <Property Name="mo_ta_phuong_tien" Type="text" />
+  </EntityType>
+  <EntityType Name="Pthuc_tt">
+    <Key>
+      <PropertyRef Name="ma_pt_tt" />
+    </Key>
+    <Property Name="ma_pt_tt" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="loai_thanh_toan" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="Thanh_toan">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+      <PropertyRef Name="ma_pt_tt" />
+    </Key>
+    <Property Name="tai_khoan" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="ma_pt_tt" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" />
+    <Property Name="ma_phong" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Tien_nghi">
+    <Key>
+      <PropertyRef Name="ma_tien_nghi" />
+    </Key>
+    <Property Name="ma_tien_nghi" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_tien_nghi" Type="nvarchar" MaxLength="1000" />
+    <Property Name="nd_tien_nghi" Type="text" />
+  </EntityType>
+  <EntityType Name="Tinh">
+    <Key>
+      <PropertyRef Name="ma_tinh" />
+    </Key>
+    <Property Name="ma_tinh" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_tinh" Type="nvarchar" MaxLength="100" />
+    <Property Name="gioi_thieu_tinh" Type="nvarchar" MaxLength="4000" />
+    <Property Name="anh" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="Tour">
+    <Key>
+      <PropertyRef Name="ma_tour" />
+    </Key>
+    <Property Name="ma_tour" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_tour" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ngay_kh" Type="date" />
+    <Property Name="diem_kh" Type="nvarchar" MaxLength="1000" />
+    <Property Name="gioi_thieu_tour" Type="nvarchar" MaxLength="4000" />
+    <Property Name="thoi_gian" Type="nvarchar" MaxLength="1000" />
+    <Property Name="lich_trinh" Type="nvarchar" MaxLength="4000" />
+    <Property Name="khuyen_mai_tour" Type="nvarchar" MaxLength="1000" />
+    <Property Name="gia_tour" Type="float" />
+    <Property Name="danh_gia_tour" Type="int" />
+    <Property Name="sl_chia_se" Type="int" />
+    <Property Name="sl_thich" Type="int" />
+  </EntityType>
+  <EntityType Name="Tuy_chon">
+    <Key>
+      <PropertyRef Name="ma_tuy_chon" />
+    </Key>
+    <Property Name="ma_tuy_chon" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ten_tuy_chon" Type="nvarchar" MaxLength="1000" />
+    <Property Name="nd_tuy_chon" Type="text" />
+  </EntityType>
+  <EntityType Name="Url_anh">
+    <Key>
+      <PropertyRef Name="id_anh" />
+    </Key>
+    <Property Name="id_anh" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="dc_url" Type="image" />
+    <Property Name="ten_anh" Type="nvarchar" MaxLength="1000" />
+    <Property Name="loai_anh" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="fk_Camnang_Diadiem">
+    <End Role="Dia_diem" Type="Self.Dia_diem" Multiplicity="0..1" />
+    <End Role="Cam_nang" Type="Self.Cam_nang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dia_diem">
+        <PropertyRef Name="ma_dd" />
+      </Principal>
+      <Dependent Role="Cam_nang">
+        <PropertyRef Name="ma_dd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtAnh_anh">
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="1" />
+    <End Role="Ct_anh_tour" Type="Self.Ct_anh_tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Url_anh">
+        <PropertyRef Name="id_anh" />
+      </Principal>
+      <Dependent Role="Ct_anh_tour">
+        <PropertyRef Name="id_anh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtAnh_tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="Ct_anh_tour" Type="Self.Ct_anh_tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Ct_anh_tour">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtAnhks_Khachsan">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="1" />
+    <End Role="Ct_anh_ks" Type="Self.Ct_anh_ks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_san">
+        <PropertyRef Name="ma_ks" />
+      </Principal>
+      <Dependent Role="Ct_anh_ks">
+        <PropertyRef Name="ma_ks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtAnhks_UrlAnh">
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="1" />
+    <End Role="Ct_anh_ks" Type="Self.Ct_anh_ks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Url_anh">
+        <PropertyRef Name="id_anh" />
+      </Principal>
+      <Dependent Role="Ct_anh_ks">
+        <PropertyRef Name="id_anh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtAnhphong_CtPhong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="1" />
+    <End Role="Ct_anh_phong" Type="Self.Ct_anh_phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ct_phong">
+        <PropertyRef Name="ma_phong" />
+      </Principal>
+      <Dependent Role="Ct_anh_phong">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtAnhphong_UrlAnh">
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="1" />
+    <End Role="Ct_anh_phong" Type="Self.Ct_anh_phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Url_anh">
+        <PropertyRef Name="id_anh" />
+      </Principal>
+      <Dependent Role="Ct_anh_phong">
+        <PropertyRef Name="id_anh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtCamnang_Camnang">
+    <End Role="Cam_nang" Type="Self.Cam_nang" Multiplicity="1" />
+    <End Role="Ct_Camnang" Type="Self.Ct_Camnang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cam_nang">
+        <PropertyRef Name="ma_bai_viet" />
+      </Principal>
+      <Dependent Role="Ct_Camnang">
+        <PropertyRef Name="ma_bai_viet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtCamnang_UrlAnh">
+    <End Role="Url_anh" Type="Self.Url_anh" Multiplicity="1" />
+    <End Role="Ct_Camnang" Type="Self.Ct_Camnang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Url_anh">
+        <PropertyRef Name="id_anh" />
+      </Principal>
+      <Dependent Role="Ct_Camnang">
+        <PropertyRef Name="id_anh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtDatPhong_CtPhong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="1" />
+    <End Role="Ct_datPhong" Type="Self.Ct_datPhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ct_phong">
+        <PropertyRef Name="ma_phong" />
+      </Principal>
+      <Dependent Role="Ct_datPhong">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtDatPhong_Khachhang">
+    <End Role="Khach_hang" Type="Self.Khach_hang" Multiplicity="1" />
+    <End Role="Ct_datPhong" Type="Self.Ct_datPhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_hang">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="Ct_datPhong">
+        <PropertyRef Name="tai_khoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtDatTour_Khachhang">
+    <End Role="Khach_hang" Type="Self.Khach_hang" Multiplicity="1" />
+    <End Role="Ct_dat_tour" Type="Self.Ct_dat_tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_hang">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="Ct_dat_tour">
+        <PropertyRef Name="tai_khoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtDatTour_Tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="Ct_dat_tour" Type="Self.Ct_dat_tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Ct_dat_tour">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtNhacc_Nhacc">
+    <End Role="Nha_cung_cap" Type="Self.Nha_cung_cap" Multiplicity="1" />
+    <End Role="Ct_nha_cc" Type="Self.Ct_nha_cc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nha_cung_cap">
+        <PropertyRef Name="ma_nha_cc" />
+      </Principal>
+      <Dependent Role="Ct_nha_cc">
+        <PropertyRef Name="ma_nha_cc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtNhacc_Tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="Ct_nha_cc" Type="Self.Ct_nha_cc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Ct_nha_cc">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtPhong_Khachsan">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="0..1" />
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_san">
+        <PropertyRef Name="ma_ks" />
+      </Principal>
+      <Dependent Role="Ct_phong">
+        <PropertyRef Name="ma_ks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtPhong_Loaiphong">
+    <End Role="Loai_phong" Type="Self.Loai_phong" Multiplicity="0..1" />
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loai_phong">
+        <PropertyRef Name="ma_loai_phong" />
+      </Principal>
+      <Dependent Role="Ct_phong">
+        <PropertyRef Name="ma_loai_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtPhuongtien_Phuongtien">
+    <End Role="Phuong_tien" Type="Self.Phuong_tien" Multiplicity="1" />
+    <End Role="Ct_phuong_tien" Type="Self.Ct_phuong_tien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phuong_tien">
+        <PropertyRef Name="ma_phuong_tien" />
+      </Principal>
+      <Dependent Role="Ct_phuong_tien">
+        <PropertyRef Name="ma_phuong_tien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtPhuongtien_Tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="Ct_phuong_tien" Type="Self.Ct_phuong_tien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Ct_phuong_tien">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtTienNghi_Khachsan">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="1" />
+    <End Role="Ct_tien_nghi" Type="Self.Ct_tien_nghi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_san">
+        <PropertyRef Name="ma_ks" />
+      </Principal>
+      <Dependent Role="Ct_tien_nghi">
+        <PropertyRef Name="ma_ks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtTienNghi_TienNghi">
+    <End Role="Tien_nghi" Type="Self.Tien_nghi" Multiplicity="1" />
+    <End Role="Ct_tien_nghi" Type="Self.Ct_tien_nghi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tien_nghi">
+        <PropertyRef Name="ma_tien_nghi" />
+      </Principal>
+      <Dependent Role="Ct_tien_nghi">
+        <PropertyRef Name="ma_tien_nghi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtTour_loaiTour">
+    <End Role="Loai_tour" Type="Self.Loai_tour" Multiplicity="1" />
+    <End Role="Ct_loai_tour" Type="Self.Ct_loai_tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loai_tour">
+        <PropertyRef Name="ma_loai_tour" />
+      </Principal>
+      <Dependent Role="Ct_loai_tour">
+        <PropertyRef Name="ma_loai_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtTour_tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="Ct_loai_tour" Type="Self.Ct_loai_tour" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Ct_loai_tour">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtTuychon_CtPhong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="1" />
+    <End Role="Ct_tuy_chon" Type="Self.Ct_tuy_chon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ct_phong">
+        <PropertyRef Name="ma_phong" />
+      </Principal>
+      <Dependent Role="Ct_tuy_chon">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CtTuychon_Tuychon">
+    <End Role="Tuy_chon" Type="Self.Tuy_chon" Multiplicity="1" />
+    <End Role="Ct_tuy_chon" Type="Self.Ct_tuy_chon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tuy_chon">
+        <PropertyRef Name="ma_tuy_chon" />
+      </Principal>
+      <Dependent Role="Ct_tuy_chon">
+        <PropertyRef Name="ma_tuy_chon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dd_diadiem">
+    <End Role="Dia_diem" Type="Self.Dia_diem" Multiplicity="1" />
+    <End Role="Ct_dd" Type="Self.Ct_dd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dia_diem">
+        <PropertyRef Name="ma_dd" />
+      </Principal>
+      <Dependent Role="Ct_dd">
+        <PropertyRef Name="ma_dd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dd_tinh">
+    <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+    <End Role="Dia_diem" Type="Self.Dia_diem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tinh">
+        <PropertyRef Name="ma_tinh" />
+      </Principal>
+      <Dependent Role="Dia_diem">
+        <PropertyRef Name="ma_tinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_dd_tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+    <End Role="Ct_dd" Type="Self.Ct_dd" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Ct_dd">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ganKs_Khachsan">
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="1" />
+    <End Role="Dia_diem_gan_ks" Type="Self.Dia_diem_gan_ks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_san">
+        <PropertyRef Name="ma_ks" />
+      </Principal>
+      <Dependent Role="Dia_diem_gan_ks">
+        <PropertyRef Name="ma_ks" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Khachsan_Tinh">
+    <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+    <End Role="Khach_san" Type="Self.Khach_san" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tinh">
+        <PropertyRef Name="ma_tinh" />
+      </Principal>
+      <Dependent Role="Khach_san">
+        <PropertyRef Name="ma_tinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_CtPhong">
+    <End Role="Ct_phong" Type="Self.Ct_phong" Multiplicity="0..1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ct_phong">
+        <PropertyRef Name="ma_phong" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_Khachhang">
+    <End Role="Khach_hang" Type="Self.Khach_hang" Multiplicity="1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khach_hang">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="tai_khoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_Pthuctt">
+    <End Role="Pthuc_tt" Type="Self.Pthuc_tt" Multiplicity="1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pthuc_tt">
+        <PropertyRef Name="ma_pt_tt" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="ma_pt_tt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Thanhtoan_Tour">
+    <End Role="Tour" Type="Self.Tour" Multiplicity="0..1" />
+    <End Role="Thanh_toan" Type="Self.Thanh_toan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tour">
+        <PropertyRef Name="ma_tour" />
+      </Principal>
+      <Dependent Role="Thanh_toan">
+        <PropertyRef Name="ma_tour" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="webMytourModelStoreContainer">
+    <EntitySet Name="Cam_nang" EntityType="Self.Cam_nang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_anh_ks" EntityType="Self.Ct_anh_ks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_anh_phong" EntityType="Self.Ct_anh_phong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_anh_tour" EntityType="Self.Ct_anh_tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_Camnang" EntityType="Self.Ct_Camnang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_dat_tour" EntityType="Self.Ct_dat_tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_datPhong" EntityType="Self.Ct_datPhong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_dd" EntityType="Self.Ct_dd" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_loai_tour" EntityType="Self.Ct_loai_tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_nha_cc" EntityType="Self.Ct_nha_cc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_phong" EntityType="Self.Ct_phong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_phuong_tien" EntityType="Self.Ct_phuong_tien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_tien_nghi" EntityType="Self.Ct_tien_nghi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ct_tuy_chon" EntityType="Self.Ct_tuy_chon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dia_diem" EntityType="Self.Dia_diem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dia_diem_gan_ks" EntityType="Self.Dia_diem_gan_ks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khach_hang" EntityType="Self.Khach_hang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khach_san" EntityType="Self.Khach_san" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loai_phong" EntityType="Self.Loai_phong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loai_tour" EntityType="Self.Loai_tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nha_cung_cap" EntityType="Self.Nha_cung_cap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Phuong_tien" EntityType="Self.Phuong_tien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pthuc_tt" EntityType="Self.Pthuc_tt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Thanh_toan" EntityType="Self.Thanh_toan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tien_nghi" EntityType="Self.Tien_nghi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tinh" EntityType="Self.Tinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tuy_chon" EntityType="Self.Tuy_chon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Url_anh" EntityType="Self.Url_anh" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Camnang_Diadiem" Association="Self.fk_Camnang_Diadiem">
+      <End Role="Dia_diem" EntitySet="Dia_diem" />
+      <End Role="Cam_nang" EntitySet="Cam_nang" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtAnh_anh" Association="Self.fk_CtAnh_anh">
+      <End Role="Url_anh" EntitySet="Url_anh" />
+      <End Role="Ct_anh_tour" EntitySet="Ct_anh_tour" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtAnh_tour" Association="Self.fk_CtAnh_tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Ct_anh_tour" EntitySet="Ct_anh_tour" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtAnhks_Khachsan" Association="Self.fk_CtAnhks_Khachsan">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Ct_anh_ks" EntitySet="Ct_anh_ks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtAnhks_UrlAnh" Association="Self.fk_CtAnhks_UrlAnh">
+      <End Role="Url_anh" EntitySet="Url_anh" />
+      <End Role="Ct_anh_ks" EntitySet="Ct_anh_ks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtAnhphong_CtPhong" Association="Self.fk_CtAnhphong_CtPhong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Ct_anh_phong" EntitySet="Ct_anh_phong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtAnhphong_UrlAnh" Association="Self.fk_CtAnhphong_UrlAnh">
+      <End Role="Url_anh" EntitySet="Url_anh" />
+      <End Role="Ct_anh_phong" EntitySet="Ct_anh_phong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtCamnang_Camnang" Association="Self.fk_CtCamnang_Camnang">
+      <End Role="Cam_nang" EntitySet="Cam_nang" />
+      <End Role="Ct_Camnang" EntitySet="Ct_Camnang" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtCamnang_UrlAnh" Association="Self.fk_CtCamnang_UrlAnh">
+      <End Role="Url_anh" EntitySet="Url_anh" />
+      <End Role="Ct_Camnang" EntitySet="Ct_Camnang" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtDatPhong_CtPhong" Association="Self.fk_CtDatPhong_CtPhong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Ct_datPhong" EntitySet="Ct_datPhong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtDatPhong_Khachhang" Association="Self.fk_CtDatPhong_Khachhang">
+      <End Role="Khach_hang" EntitySet="Khach_hang" />
+      <End Role="Ct_datPhong" EntitySet="Ct_datPhong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtDatTour_Khachhang" Association="Self.fk_CtDatTour_Khachhang">
+      <End Role="Khach_hang" EntitySet="Khach_hang" />
+      <End Role="Ct_dat_tour" EntitySet="Ct_dat_tour" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtDatTour_Tour" Association="Self.fk_CtDatTour_Tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Ct_dat_tour" EntitySet="Ct_dat_tour" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtNhacc_Nhacc" Association="Self.fk_CtNhacc_Nhacc">
+      <End Role="Nha_cung_cap" EntitySet="Nha_cung_cap" />
+      <End Role="Ct_nha_cc" EntitySet="Ct_nha_cc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtNhacc_Tour" Association="Self.fk_CtNhacc_Tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Ct_nha_cc" EntitySet="Ct_nha_cc" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtPhong_Khachsan" Association="Self.fk_CtPhong_Khachsan">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtPhong_Loaiphong" Association="Self.fk_CtPhong_Loaiphong">
+      <End Role="Loai_phong" EntitySet="Loai_phong" />
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtPhuongtien_Phuongtien" Association="Self.fk_CtPhuongtien_Phuongtien">
+      <End Role="Phuong_tien" EntitySet="Phuong_tien" />
+      <End Role="Ct_phuong_tien" EntitySet="Ct_phuong_tien" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtPhuongtien_Tour" Association="Self.fk_CtPhuongtien_Tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Ct_phuong_tien" EntitySet="Ct_phuong_tien" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtTienNghi_Khachsan" Association="Self.fk_CtTienNghi_Khachsan">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Ct_tien_nghi" EntitySet="Ct_tien_nghi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtTienNghi_TienNghi" Association="Self.fk_CtTienNghi_TienNghi">
+      <End Role="Tien_nghi" EntitySet="Tien_nghi" />
+      <End Role="Ct_tien_nghi" EntitySet="Ct_tien_nghi" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtTour_loaiTour" Association="Self.fk_CtTour_loaiTour">
+      <End Role="Loai_tour" EntitySet="Loai_tour" />
+      <End Role="Ct_loai_tour" EntitySet="Ct_loai_tour" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtTour_tour" Association="Self.fk_CtTour_tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Ct_loai_tour" EntitySet="Ct_loai_tour" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtTuychon_CtPhong" Association="Self.fk_CtTuychon_CtPhong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Ct_tuy_chon" EntitySet="Ct_tuy_chon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CtTuychon_Tuychon" Association="Self.fk_CtTuychon_Tuychon">
+      <End Role="Tuy_chon" EntitySet="Tuy_chon" />
+      <End Role="Ct_tuy_chon" EntitySet="Ct_tuy_chon" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dd_diadiem" Association="Self.fk_dd_diadiem">
+      <End Role="Dia_diem" EntitySet="Dia_diem" />
+      <End Role="Ct_dd" EntitySet="Ct_dd" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dd_tinh" Association="Self.fk_dd_tinh">
+      <End Role="Tinh" EntitySet="Tinh" />
+      <End Role="Dia_diem" EntitySet="Dia_diem" />
+    </AssociationSet>
+    <AssociationSet Name="fk_dd_tour" Association="Self.fk_dd_tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Ct_dd" EntitySet="Ct_dd" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ganKs_Khachsan" Association="Self.fk_ganKs_Khachsan">
+      <End Role="Khach_san" EntitySet="Khach_san" />
+      <End Role="Dia_diem_gan_ks" EntitySet="Dia_diem_gan_ks" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Khachsan_Tinh" Association="Self.fk_Khachsan_Tinh">
+      <End Role="Tinh" EntitySet="Tinh" />
+      <End Role="Khach_san" EntitySet="Khach_san" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_CtPhong" Association="Self.fk_Thanhtoan_CtPhong">
+      <End Role="Ct_phong" EntitySet="Ct_phong" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_Khachhang" Association="Self.fk_Thanhtoan_Khachhang">
+      <End Role="Khach_hang" EntitySet="Khach_hang" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_Pthuctt" Association="Self.fk_Thanhtoan_Pthuctt">
+      <End Role="Pthuc_tt" EntitySet="Pthuc_tt" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Thanhtoan_Tour" Association="Self.fk_Thanhtoan_Tour">
+      <End Role="Tour" EntitySet="Tour" />
+      <End Role="Thanh_toan" EntitySet="Thanh_toan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

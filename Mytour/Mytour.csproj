@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -43,7 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,12 +76,617 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css" />
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap.min.css" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+    <Content Include="bootstrap-3.3.7-dist\js\npm.js" />
+    <Content Include="database\WebMyTourModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebMyTourModel.edmx</DependentUpon>
+      <LastGenOutput>WebMyTourModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="database\WebMyTourModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebMyTourModel.edmx</DependentUpon>
+      <LastGenOutput>WebMyTourModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="folder-css\admin.css" />
+    <Content Include="folder-css\assets\images\avatar-1.jpg" />
+    <Content Include="folder-css\assets\images\avatar-2.jpg" />
+    <Content Include="folder-css\assets\images\avatar-3.jpg" />
+    <Content Include="folder-css\assets\images\avatar-4.jpg" />
+    <Content Include="folder-css\assets\images\avatar-5.jpg" />
+    <Content Include="folder-css\assets\images\bitbucket.png" />
+    <Content Include="folder-css\assets\images\card-img-1.jpg" />
+    <Content Include="folder-css\assets\images\card-img-2.jpg" />
+    <Content Include="folder-css\assets\images\card-img-3.jpg" />
+    <Content Include="folder-css\assets\images\card-img.jpg" />
+    <Content Include="folder-css\assets\images\down-arrow.png" />
+    <Content Include="folder-css\assets\images\drag-indicator.png" />
+    <Content Include="folder-css\assets\images\dribbble.png" />
+    <Content Include="folder-css\assets\images\dropbox.png" />
+    <Content Include="folder-css\assets\images\eco-product-img-1.png" />
+    <Content Include="folder-css\assets\images\eco-product-img-2.png" />
+    <Content Include="folder-css\assets\images\eco-product-img-3.png" />
+    <Content Include="folder-css\assets\images\eco-product-img-4.png" />
+    <Content Include="folder-css\assets\images\eco-slider-img-1.png" />
+    <Content Include="folder-css\assets\images\eco-slider-img-2.png" />
+    <Content Include="folder-css\assets\images\eco-slider-img-3.png" />
+    <Content Include="folder-css\assets\images\error-img.png" />
+    <Content Include="folder-css\assets\images\github.png" />
+    <Content Include="folder-css\assets\images\loader.svg" />
+    <Content Include="folder-css\assets\images\logo.png" />
+    <Content Include="folder-css\assets\images\mail_chimp.png" />
+    <Content Include="folder-css\assets\images\product-pic-2.jpg" />
+    <Content Include="folder-css\assets\images\product-pic-3.jpg" />
+    <Content Include="folder-css\assets\images\product-pic-4.jpg" />
+    <Content Include="folder-css\assets\images\product-pic.jpg" />
+    <Content Include="folder-css\assets\images\slack.png" />
+    <Content Include="folder-css\assets\images\switch.png" />
+    <Content Include="folder-css\assets\libs\css\style.css" />
+    <Content Include="folder-css\assets\libs\js\dashboard-ecommerce.js" />
+    <Content Include="folder-css\assets\libs\js\dashboard-finance.js" />
+    <Content Include="folder-css\assets\libs\js\dashboard-influencer.js" />
+    <Content Include="folder-css\assets\libs\js\dashboard-sales.js" />
+    <Content Include="folder-css\assets\libs\js\gmaps.min.js" />
+    <Content Include="folder-css\assets\libs\js\google_map.js" />
+    <Content Include="folder-css\assets\libs\js\jvectormap.custom.js" />
+    <Content Include="folder-css\assets\libs\js\main-js.js" />
+    <Content Include="folder-css\assets\vendor\bootstrap-colorpicker\%40claviska\jquery-minicolors\jquery.minicolors.css" />
+    <Content Include="folder-css\assets\vendor\bootstrap-colorpicker\%40claviska\jquery-minicolors\jquery.minicolors.min.js" />
+    <Content Include="folder-css\assets\vendor\bootstrap-colorpicker\%40claviska\jquery-minicolors\jquery.minicolors.png" />
+    <Content Include="folder-css\assets\vendor\bootstrap-colorpicker\jquery-asColorPicker\dist\jquery-asColorPicker.min.js" />
+    <Content Include="folder-css\assets\vendor\bootstrap-colorpicker\jquery-asColor\dist\jquery-asColor.min.js" />
+    <Content Include="folder-css\assets\vendor\bootstrap-colorpicker\jquery-asGradient\dist\jquery-asGradient.js" />
+    <Content Include="folder-css\assets\vendor\bootstrap-select\css\bootstrap-select.css" />
+    <Content Include="folder-css\assets\vendor\bootstrap-select\js\bootstrap-select.js" />
+    <Content Include="folder-css\assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="folder-css\assets\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="folder-css\assets\vendor\charts\c3charts\c3.css" />
+    <Content Include="folder-css\assets\vendor\charts\c3charts\c3.min.js" />
+    <Content Include="folder-css\assets\vendor\charts\c3charts\C3chartjs.js" />
+    <Content Include="folder-css\assets\vendor\charts\c3charts\d3-5.4.0.min.js" />
+    <Content Include="folder-css\assets\vendor\charts\chartist-bundle\chartist-plugin-threshold.js" />
+    <Content Include="folder-css\assets\vendor\charts\chartist-bundle\chartist.css" />
+    <Content Include="folder-css\assets\vendor\charts\chartist-bundle\chartist.min.js" />
+    <Content Include="folder-css\assets\vendor\charts\chartist-bundle\Chartistjs.js" />
+    <Content Include="folder-css\assets\vendor\charts\charts-bundle\Chart.bundle.js" />
+    <Content Include="folder-css\assets\vendor\charts\charts-bundle\chartjs.js" />
+    <Content Include="folder-css\assets\vendor\charts\morris-bundle\morris.css" />
+    <Content Include="folder-css\assets\vendor\charts\morris-bundle\morris.js" />
+    <Content Include="folder-css\assets\vendor\charts\morris-bundle\morrisjs.html" />
+    <Content Include="folder-css\assets\vendor\charts\morris-bundle\Morrisjs.js" />
+    <Content Include="folder-css\assets\vendor\charts\morris-bundle\raphael.min.js" />
+    <Content Include="folder-css\assets\vendor\charts\sparkline\jquery.sparkline.js" />
+    <Content Include="folder-css\assets\vendor\charts\sparkline\spark-js.js" />
+    <Content Include="folder-css\assets\vendor\cropper\dist\cropper-int.js" />
+    <Content Include="folder-css\assets\vendor\cropper\dist\cropper.min.css" />
+    <Content Include="folder-css\assets\vendor\cropper\dist\cropper.min.js" />
+    <Content Include="folder-css\assets\vendor\custom-js\jquery.multi-select.html" />
+    <Content Include="folder-css\assets\vendor\datatables\css\buttons.bootstrap4.css" />
+    <Content Include="folder-css\assets\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="folder-css\assets\vendor\datatables\css\fixedHeader.bootstrap4.css" />
+    <Content Include="folder-css\assets\vendor\datatables\css\select.bootstrap4.css" />
+    <Content Include="folder-css\assets\vendor\datatables\js\buttons.bootstrap4.min.js" />
+    <Content Include="folder-css\assets\vendor\datatables\js\data-table.js" />
+    <Content Include="folder-css\assets\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="folder-css\assets\vendor\datepicker\datepicker.js" />
+    <Content Include="folder-css\assets\vendor\datepicker\moment.js" />
+    <Content Include="folder-css\assets\vendor\datepicker\tempusdominus-bootstrap-4.css" />
+    <Content Include="folder-css\assets\vendor\datepicker\tempusdominus-bootstrap-4.js" />
+    <Content Include="folder-css\assets\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="folder-css\assets\vendor\dropzone\dropzone.js" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\style.css" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flag-icon.min.css" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ad.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ae.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\af.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ag.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ai.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\al.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\am.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ao.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\aq.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ar.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\as.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\at.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\au.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\aw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ax.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\az.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ba.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bb.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bd.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\be.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bh.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bi.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bj.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bo.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bq.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\br.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bs.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bv.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\by.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\bz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ca.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cd.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ch.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ci.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ck.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\co.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cv.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cx.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cy.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\cz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\de.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\dj.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\dk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\dm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\do.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\dz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ec.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ee.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\eg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\eh.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\er.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\es.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\et.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\fi.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\fj.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\fk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\fm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\fo.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\fr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ga.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gb.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gd.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ge.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gh.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gi.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gp.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gq.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gs.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\gy.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\hk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\hm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\hn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\hr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ht.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\hu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\id.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ie.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\il.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\im.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\in.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\io.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\iq.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ir.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\is.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\it.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\je.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\jm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\jo.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\jp.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ke.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kh.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ki.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\km.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kp.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ky.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\kz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\la.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lb.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\li.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ls.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\lv.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ly.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ma.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\md.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\me.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mh.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ml.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mo.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mp.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mq.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ms.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mv.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mx.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\my.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\mz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\na.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\nc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ne.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\nf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ng.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ni.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\nl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\no.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\np.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\nr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\nu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\nz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\om.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pa.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pe.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ph.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ps.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\pw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\py.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\qa.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\re.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ro.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\rs.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ru.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\rw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sa.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sb.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sd.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\se.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sh.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\si.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sj.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\so.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ss.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\st.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sv.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sx.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sy.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\sz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\td.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\th.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tj.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tk.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tl.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\to.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tr.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tv.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\tz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ua.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ug.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\um.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\us.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\uy.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\uz.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\va.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\vc.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ve.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\vg.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\vi.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\vn.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\vu.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\wf.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ws.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\ye.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\yt.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\za.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\zm.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\flag-icon-css\flags\zw.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\css\fontawesome-all.css" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-brands-400.html" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-regular-400.html" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-solid-900.html" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\css\materialdesignicons.min.css" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\fonts\materialdesignicons-webfontdc99.html" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\fonts\materialdesignicons-webfontdc99.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\fonts\Simple-Line-Icons4c82.html" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\fonts\Simple-Line-Icons4c82.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\themify-icons\fonts\themify9f24.svg" />
+    <Content Include="folder-css\assets\vendor\fonts\themify-icons\themify-icons.css" />
+    <Content Include="folder-css\assets\vendor\fonts\weather-icons\css\weather-icons.min.css" />
+    <Content Include="folder-css\assets\vendor\full-calendar\css\fullcalendar.css" />
+    <Content Include="folder-css\assets\vendor\full-calendar\css\fullcalendar.print.css" />
+    <Content Include="folder-css\assets\vendor\full-calendar\js\calendar.js" />
+    <Content Include="folder-css\assets\vendor\full-calendar\js\fullcalendar.js" />
+    <Content Include="folder-css\assets\vendor\full-calendar\js\jquery-ui.min.js" />
+    <Content Include="folder-css\assets\vendor\full-calendar\js\moment.min.js" />
+    <Content Include="folder-css\assets\vendor\gauge\gauge.js" />
+    <Content Include="folder-css\assets\vendor\gauge\gauge.min.js" />
+    <Content Include="folder-css\assets\vendor\inputmask\css\inputmask.css" />
+    <Content Include="folder-css\assets\vendor\inputmask\js\jquery.inputmask.bundle.js" />
+    <Content Include="folder-css\assets\vendor\jquery\jquery-3.3.1.min.js" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-2.0.2.css" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-2.0.2.min.js" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-au-mill.js" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-in-mill.js" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-uk-mill-en.js" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="folder-css\assets\vendor\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="folder-css\assets\vendor\multi-select\css\multi-select.css" />
+    <Content Include="folder-css\assets\vendor\multi-select\js\jquery.multi-select.js" />
+    <Content Include="folder-css\assets\vendor\parsley\parsley.js" />
+    <Content Include="folder-css\assets\vendor\select2\css\select2.css" />
+    <Content Include="folder-css\assets\vendor\select2\js\select2.min.js" />
+    <Content Include="folder-css\assets\vendor\shortable-nestable\jquery.nestable.js" />
+    <Content Include="folder-css\assets\vendor\shortable-nestable\sort-nest.js" />
+    <Content Include="folder-css\assets\vendor\shortable-nestable\Sortable.min.js" />
+    <Content Include="folder-css\assets\vendor\slimscroll\jquery.slimscroll.js" />
+    <Content Include="folder-css\assets\vendor\summernote\css\summernote-bs4.css" />
+    <Content Include="folder-css\assets\vendor\summernote\js\summernote-bs4.js" />
+    <Content Include="folder-css\assets\vendor\timeline\img\cd-icon-location.svg" />
+    <Content Include="folder-css\assets\vendor\timeline\img\cd-icon-movie.svg" />
+    <Content Include="folder-css\assets\vendor\timeline\img\cd-icon-picture.svg" />
+    <Content Include="folder-css\assets\vendor\timeline\js\main.js" />
+    <Content Include="folder-css\assets\vendor\vector-map\jqvmap.css" />
+    <Content Include="folder-css\content-admin.css" />
+    <Content Include="folder-css\font-awesome\CSS\font-awesome.css" />
+    <Content Include="folder-css\font-awesome\CSS\font-awesome.min.css" />
+    <Content Include="folder-css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="folder-css\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="folder-css\login-admin.css" />
+    <Content Include="folder-css\master.css" />
+    <Content Include="folder-html\tour-admin.aspx" />
+    <Content Include="folder-html\Home.aspx" />
+    <Content Include="folder-html\login-admin.aspx" />
+    <Content Include="folder-js\jquery-3.4.1.min.js" />
+    <Content Include="folder-js\login-pageAdmin.js" />
+    <Content Include="image\avatar.jpg" />
+    <Content Include="image\dd-nn-7.jpg" />
+    <Content Include="image\icon-phone-grp.png" />
+    <Content Include="image\logo-admin-png-4.png" />
+    <Content Include="image\logo-web.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.Master.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin.Master.designer.cs">
+      <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="database\Cam_nang.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Ct_phong.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Dia_diem.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Dia_diem_gan_ks.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Khach_hang.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Khach_san.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Loai_phong.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Loai_tour.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Nha_cung_cap.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Phuong_tien.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Pthuc_tt.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Thanh_toan.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Tien_nghi.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Tinh.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Tour.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Tuy_chon.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Url_anh.cs">
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\WebMyTourModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebMyTourModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\WebMyTourModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebMyTourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\WebMyTourModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebMyTourModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="folder-html\content-admin.aspx.cs">
+      <DependentUpon>tour-admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="folder-html\content-admin.aspx.designer.cs">
+      <DependentUpon>tour-admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="folder-html\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="folder-html\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="folder-html\login-admin.aspx.cs">
+      <DependentUpon>login-admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="folder-html\login-admin.aspx.designer.cs">
+      <DependentUpon>login-admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrap-3.3.7-dist\css\bootstrap-theme.css.map" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="bootstrap-3.3.7-dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Master.Master" />
+    <Content Include="folder-css\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="folder-css\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="folder-css\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="folder-css\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="folder-css\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="folder-css\font-awesome\less\animated.less" />
+    <Content Include="folder-css\font-awesome\less\bordered-pulled.less" />
+    <Content Include="folder-css\font-awesome\less\core.less" />
+    <Content Include="folder-css\font-awesome\less\fixed-width.less" />
+    <Content Include="folder-css\font-awesome\less\font-awesome.less" />
+    <Content Include="folder-css\font-awesome\less\icons.less" />
+    <Content Include="folder-css\font-awesome\less\larger.less" />
+    <Content Include="folder-css\font-awesome\less\list.less" />
+    <Content Include="folder-css\font-awesome\less\mixins.less" />
+    <Content Include="folder-css\font-awesome\less\path.less" />
+    <Content Include="folder-css\font-awesome\less\rotated-flipped.less" />
+    <Content Include="folder-css\font-awesome\less\screen-reader.less" />
+    <Content Include="folder-css\font-awesome\less\stacked.less" />
+    <Content Include="folder-css\font-awesome\less\variables.less" />
+    <Content Include="folder-css\font-awesome\scss\font-awesome.scss" />
+    <Content Include="folder-css\font-awesome\scss\_animated.scss" />
+    <Content Include="folder-css\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="folder-css\font-awesome\scss\_core.scss" />
+    <Content Include="folder-css\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="folder-css\font-awesome\scss\_icons.scss" />
+    <Content Include="folder-css\font-awesome\scss\_larger.scss" />
+    <Content Include="folder-css\font-awesome\scss\_list.scss" />
+    <Content Include="folder-css\font-awesome\scss\_mixins.scss" />
+    <Content Include="folder-css\font-awesome\scss\_path.scss" />
+    <Content Include="folder-css\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="folder-css\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="folder-css\font-awesome\scss\_stacked.scss" />
+    <Content Include="folder-css\font-awesome\scss\_variables.scss" />
+    <Content Include="admin.Master" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-Black.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-BlackItalic.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-Bold.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-BoldItalic.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-Book.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-BookItalic.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-Medium.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\circular-std\CircularStd-MediumItalic.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-brands-400d41d.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-regular-400d41d.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\fontawesome\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\fonts\materialdesignicons-webfontd41d.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\fonts\materialdesignicons-webfontdc99.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\fonts\materialdesignicons-webfontdc99.ttf" />
+    <Content Include="folder-css\assets\vendor\fonts\material-design-iconic-font\fonts\materialdesignicons-webfontdc99.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\fonts\Simple-Line-Icons4c82.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\fonts\Simple-Line-Icons4c82.ttf" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\fonts\Simple-Line-Icons4c82.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\simple-line-icons\fonts\Simple-Line-Iconsd41d.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\themify-icons\fonts\themify.ttf" />
+    <Content Include="folder-css\assets\vendor\fonts\themify-icons\fonts\themify.woff" />
+    <Content Include="folder-css\assets\vendor\fonts\themify-icons\fonts\themify9f24.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\themify-icons\fonts\themifyd41d.eot" />
+    <Content Include="folder-css\assets\vendor\fonts\weather-icons\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="folder-css\assets\vendor\summernote\css\font\summernote.eot" />
+    <Content Include="folder-css\assets\vendor\summernote\css\font\summernote.ttf" />
+    <Content Include="folder-css\assets\vendor\summernote\css\font\summernote.woff" />
+    <Content Include="folder-css\assets\vendor\summernote\css\font\summernote.woff2" />
+    <EntityDeploy Include="database\WebMyTourModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WebMyTourModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="database\WebMyTourModel.edmx.diagram">
+      <DependentUpon>WebMyTourModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -80,6 +694,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -111,7 +728,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

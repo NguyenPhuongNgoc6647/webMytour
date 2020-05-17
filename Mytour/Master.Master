@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="Mytour.Master" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>mytour.vn</title>
+    <link href="image/avatar.jpg" rel="shortcut icon" type="image/x-icon" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="folder-css/master.css" rel="stylesheet" />
+    <link href="folder-css/font-awesome/CSS/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="header">
+                <div class="container">
+                    <div class="row header--menu-main">
+                        <div class="col-md-2 logo-header">
+                            <img class="col-md-12" src="../image/logo-web.jpg" />
+                        </div>
+                        <div class="col-md-4 navbar-collapse collapse" id="menu-main">
+                            <ul class="list-inline menu-main">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-percent" aria-hidden="true"></i>Ưu đãi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-hotel"></i>Khách sạn
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-plane" aria-hidden="true"></i>Tour
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-book" aria-hidden="true"></i>Cẩm nang du lịch
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="wrap-contact col-md-3">
+                            <div class="header-contact ">
+                            <div class="img-contact">
+                                <img src="../image/icon-phone-grp.png" />
+                            </div>
+                            <div class="telephone-contact">
+                                <p>Hà Nội: 028 394 489<br />
+                                    TPHCM: 039 483 482
+                                </p>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="wrap-notify-header col-md-2 row">
+                            <ul class="list-inline notify-header">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-comments" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="login-admin.aspx">
+                                        <i class="fa fa-cogs" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+
+    </form>
+    <script src="../folder-js/jquery-3.4.1.min.js"></script>
+    <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</body>
+</html>
